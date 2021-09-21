@@ -9,15 +9,21 @@ import SocialProof from '@/components/social-proof';
 import PricingTable from '@/components/pricing-table';
 import Footer from '@/components/footer';
 
-export default function Home() {
+export default function OldIndex() {
   return (
     <Page>
       <NextSeo
-        title="Mississauga mortgage broker, Iko Maurovski"
-        description="Mississauga mortgage broker, Iko Maurovski | Find best mortgage rates | Mortgage Calculator"
+        title="STARTD - Template"
+        description="A TypeScript/Next.js theme that includes everything you need to build amazing landing page!"
       />
+      <Header />
       <main>
+        <VideoSection />
+        <ListSection />
+        <FeatureSection />
         <CasesSection />
+        <SocialProof />
+        <PricingTable />
       </main>
       <Footer />
     </Page>

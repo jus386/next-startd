@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "dev": "next",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
@@ -28,6 +29,7 @@
     ]
   },
   "dependencies": {
+    "@babel/runtime": "7.12.1",
     "@fontsource/inter": "4.2.1",
     "@svgr/webpack": "5.5.0",
     "next": "10.0.7",
@@ -35,6 +37,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-particles-js": "3.4.1",
+    "react-tsparticles": "1.35.0",
     "twind": "0.15.4"
   },
   "devDependencies": {
