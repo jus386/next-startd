@@ -1,9 +1,24 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { fetchAPI } from './api';
 
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  const reqBody = req.body;
-  console.log(`req.body=${reqBody}`);
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log(`req.body=${req.body}`);
+  const reqBodyPosted = JSON.parse(req.body);
+  const reqBody = {
+    boardId: 6456,
+    givenName: reqBodyPosted.givenName,
+    familyName: reqBodyPosted.familyName,
+    email: reqBodyPosted.email,
+    phoneNumber: reqBodyPosted.phoneNumber,
+    dateOfBirth: reqBodyPosted.dateOfBirth,
+    value: '1084546',
+    notes: [
+      'Created from Casabrite Website',
+      'Test Client Profile'
+    ]
+  };
+  const createProfileRes = await fetchAPI('client/profile', 'POST', reqBody);
+  console.log(`createProfileRes=${createProfileRes}`);
   res.statusCode = 200;
-  res.json(reqBody);
+  res.json(createProfileRes);
 };

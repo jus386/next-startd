@@ -6,6 +6,8 @@ const ApplyForm = () => {
   const [firstName, setFirstName] = useState(``);
   const [lastName, setLastName] = useState(``);
   const [email, setEmail] = useState(``);
+  const [phone, setPhone] = useState(``);
+  const [dob, setDob] = useState(``);
   const changeFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
   };
@@ -15,13 +17,21 @@ const ApplyForm = () => {
   const changeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
+  const changePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+  };
+  const changeDob = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDob(e.target.value);
+  };
   const onApplyClicked = () => {
     fetch(`api/apply`, {
       method: `POST`,
       body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
+        givenName: firstName,
+        familyName: lastName,
+        email: email,
+        phoneNumber: phone,
+        dateOfBirth: dob
       }),
     }).then((applyResponse) => {
       applyResponse.json().then((applyResult) => {
@@ -81,6 +91,34 @@ const ApplyForm = () => {
                     `border border-gray-300 bg-gray-100 min-w-0 w-full rounded text-gray-800 py-2 px-3 mr-2`,
                   )}
                   placeholder="Enter your email"
+                />
+              </div>
+            </div>
+            <div className={tw(`pt-4`)}>
+              <h4 className={tw(`font-mono text-sm uppercase text-gray-500 mb-3`)}>Phone</h4>
+              <div className={tw(`flex w-full`)}>
+                <input
+                  onChange={changePhone}
+                  aria-label="phone"
+                  type="text"
+                  className={tw(
+                    `border border-gray-300 bg-gray-100 min-w-0 w-full rounded text-gray-800 py-2 px-3 mr-2`,
+                  )}
+                  placeholder="Enter your phone"
+                />
+              </div>
+            </div>
+            <div className={tw(`pt-4`)}>
+              <h4 className={tw(`font-mono text-sm uppercase text-gray-500 mb-3`)}>Date of birth</h4>
+              <div className={tw(`flex w-full`)}>
+                <input
+                  onChange={changeDob}
+                  aria-label="dob"
+                  type="date"
+                  className={tw(
+                    `border border-gray-300 bg-gray-100 min-w-0 w-full rounded text-gray-800 py-2 px-3 mr-2`,
+                  )}
+                  placeholder="Enter your date of birth"
                 />
               </div>
             </div>
